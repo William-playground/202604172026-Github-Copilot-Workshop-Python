@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <!-- 背景エフェクト: 作業モード実行中のみ .focus-active が付与され動的効果が表示される -->
+    <div class="background-effects" aria-hidden="true">
+      <canvas id="particle-canvas"></canvas>
+      <div class="ripple-layer">
+        <span class="ripple"></span>
+        <span class="ripple"></span>
+        <span class="ripple"></span>
+      </div>
+    </div>
+
+    <main class="app">
+      <h1 class="app-title">Pomodoro Timer</h1>
+      <p class="mode-label" id="mode-label">作業中</p>
+
+      <div class="timer">
+        <!-- 円形プログレスバー (SVG) -->
+        <svg class="progress-ring" viewBox="0 0 240 240" aria-hidden="true">
+          <circle class="progress-ring__track" cx="120" cy="120" r="108" />
+          <circle
+            class="progress-ring__bar"
+            id="progress-bar"
+            cx="120"
+            cy="120"
+            r="108"
+          />
+        </svg>
+        <div class="timer__time" id="time-display">25:00</div>
+      </div>
+
+      <div class="controls">
+        <button type="button" id="start-pause" class="btn btn--primary">開始</button>
+        <button type="button" id="reset" class="btn btn--secondary">リセット</button>
+      </div>
+
+      <section class="stats" aria-label="今日の進捗">
+        <div class="stats__card">
+          <div class="stats__label">完了ポモドーロ</div>
+          <div class="stats__value" id="stat-completed">0</div>
+        </div>
+        <div class="stats__card">
+          <div class="stats__label">集中時間</div>
+          <div class="stats__value" id="stat-focus">0分</div>
+        </div>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>
