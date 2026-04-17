@@ -1,0 +1,16 @@
+{
+  "name": "copilot-web-relay-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Express + WebSocket relay server bridging browser clients to the GitHub Copilot SDK.",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "@github/copilot-sdk": "latest",
+    "express": "^4.19.2",
+    "ws": "^8.18.0"
+  }
+}
