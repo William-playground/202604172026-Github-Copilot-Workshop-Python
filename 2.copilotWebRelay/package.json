@@ -1,0 +1,15 @@
+{
+  "name": "copilot-web-relay",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Copilot SDK を使ったブラウザ AI チャット Web アプリ (Express + WebSocket + React)",
+  "scripts": {
+    "dev": "concurrently -n server,client -c cyan,magenta \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "install:all": "npm --prefix server install && npm --prefix client install",
+    "build": "npm --prefix client run build",
+    "start": "npm --prefix server run start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
