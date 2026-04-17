@@ -151,7 +151,18 @@ Flask
   completedPomodoros: 0,
   focusSecondsToday: 0,
   cycleCount: 0,
-  todayKey: '2026-04-17'
+  todayKey: '2026-04-17',
+  settings: {
+    workMinutes: 25,         // 15 / 25 / 35 / 45 から選択
+    shortBreakMinutes: 5,    // 5 / 10 / 15 から選択
+    longBreakMinutes: 15,    // 現状は固定値（将来的にカスタマイズ対象となり得る）
+    theme: 'dark',           // 'dark' / 'light' / 'focus'
+    sound: {
+      start: true,
+      end: true,
+      tick: false
+    }
+  }
 }
 ```
 
@@ -166,6 +177,11 @@ Flask
 - focusSecondsToday: 当日の累計集中秒数
 - cycleCount: 作業完了回数ベースのサイクル管理
 - todayKey: 日付単位の保存キー
+- settings.workMinutes: 作業時間（選択肢から設定）
+- settings.shortBreakMinutes: 短休憩時間（選択肢から設定）
+- settings.longBreakMinutes: 長休憩時間
+- settings.theme: 画面テーマ（ダーク/ライト/フォーカス）
+- settings.sound: 開始音・終了音・tick音それぞれのON/OFF
 
 ## 7. ディレクトリ構成案
 
@@ -210,9 +226,11 @@ static/js/
 
 保存対象例:
 
-- 作業時間
-- 短休憩時間
+- 作業時間（15 / 25 / 35 / 45 分のいずれか）
+- 短休憩時間（5 / 10 / 15 分のいずれか）
 - 長休憩時間
+- テーマ設定（ダーク / ライト / フォーカス）
+- サウンド設定（開始音・終了音・tick 音の ON / OFF）
 - 当日の完了回数
 - 当日の集中時間
 - 実行中タイマーの復元用情報
@@ -240,6 +258,7 @@ static/js/
 - 一時停止ボタンまたは開始とのトグル制御
 - リセットボタン
 - 今日の進捗カード
+- 設定パネル（作業時間・休憩時間・テーマ・サウンドのON/OFFを変更可能）
 
 UI 上の注意点:
 
@@ -247,6 +266,8 @@ UI 上の注意点:
 - 円形プログレスは SVG または conic-gradient を使って実装する
 - モード切り替え時に表示色を変える余地を残す
 - モバイル幅でも崩れにくいレイアウトにする
+- テーマ（ダーク / ライト / フォーカス）は CSS 変数などで切り替え可能にし、配色変更を局所化する
+- サウンドの ON / OFF は設定パネルから個別に切り替え可能にする
 
 ## 10. 実装フェーズ案
 
